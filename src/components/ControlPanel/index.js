@@ -1,25 +1,20 @@
 import React from 'react';
-import store from '../../store';
 import Button from '../Button';
-import { updateExpression } from '../../actions/expression';
-import { toggleHistory } from '../../actions/history';
 
-export const showHistory = () => toggleHistory();
-
-export const clearDisplay = () => updateExpression(0);
-
-export const removeOneChar = () => {
-    const curExpression = String(store.getState().curExpression);
-    const newExpWithRemovedChar = curExpression.toString().trim().substring(0, (curExpression.length - 1));
-
-    return updateExpression(newExpWithRemovedChar === '' ? 0 : newExpWithRemovedChar);
-}
-
-export const ControlPanel = () => (
-    <section className="buttons--controls">
-        <Button buttonClass="control" text="&larr;" clickHandler={removeOneChar} />
-        <Button buttonClass="control" text="c" clickHandler={clearDisplay} />
-        <Button buttonClass="control" text="history" clickHandler={showHistory} />
+export const ControlPanel = ({
+    showHistory,
+    removeOneChar,
+    clearDisplay,
+    sectionClassName = "buttons--controls",
+    buttonClassName = "control",
+    clearText = "c",
+    historyText = "History",
+    removeOneCharText = String.fromCharCode(8592)
+}) => (
+    <section className={sectionClassName}>
+        <Button buttonClass={buttonClassName} text={removeOneCharText} clickHandler={removeOneChar} />
+        <Button buttonClass={buttonClassName} text={clearText} clickHandler={clearDisplay} />
+        <Button buttonClass={buttonClassName} text={historyText} clickHandler={showHistory} />
     </section>
 );
 
