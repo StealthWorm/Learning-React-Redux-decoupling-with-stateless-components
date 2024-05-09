@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`operatorClick action should have the correct shape 1`] = `
+Object {
+  "payload": Object {
+    "CLICKED_OPERATOR_KEY": "+",
+  },
+  "type": "OPERATOR_CLICK_ACTION",
+}
+`;
